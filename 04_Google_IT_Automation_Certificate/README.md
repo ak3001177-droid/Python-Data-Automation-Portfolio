@@ -143,19 +143,44 @@ No installation required for these modules; they come pre-packaged with Python.
 #### 2. External Modules (Third-Party)
 Require installation using the Python Package Manager (`pip`).
 * **`arrow`**: A smarter, more human-friendly library for creating, manipulating, and formatting dates and times.
-  * *Key functions:* `.now()`, `.shift(days=14)`, `.humanize()` (returns readable formats like "in 2 weeks").
 * **`Pillow` (Imported as `PIL`)**: The modern Python Imaging Library used for generating and manipulating image files via code.
-  * *Key functions:* `Image.new()`, `img.show()`.
 * **`psutil`**: A powerful tool for retrieving information on running processes and system utilization (CPU, memory, disks, network, sensors).
-  * *Key functions:* `psutil.cpu_percent()`, `psutil.sensors_battery()`.
 
 ### 💻 Scripts Created in this Module
 1. **`01_os_basics.py`**: Explored date/time manipulation (Arrow), mathematical calculations (Math), and basic image generation (Pillow).
 2. **`02_system_health_check.py`**: Built a real-time system dashboard to monitor Disk Space, CPU Usage, and Battery Status using OS-level commands.
 
+---
+
+## 📖 Module 2: Reading and Writing Files (Completed)
+This module focuses on file operations, memory management while handling large files, encoding standards, and navigating OS directories using Python.
+
+### 🛠️ Key Concepts & Best Practices Learned
+
+#### 1. File Handling Modes
+* **`"r"` (Read):** Default mode. Opens file for reading only.
+* **`"w"` (Write):** Overwrites the file completely or creates a new one.
+* **`"a"` (Append):** Adds new data to the very end of an existing file without deleting old data.
+* **`"x"` (Exclusive):** Creates a new file but fails/crashes if the file already exists (Safe Write).
+* **`"+"` (Update):** Added to other modes (e.g., `"r+"`, `"w+"`) to allow both reading and writing simultaneously.
+
+#### 2. Memory Management (The Lazy Loading Approach)
+* **`readlines()`:** Loads the entire file into memory (RAM) as a list. Good for small files, but crashes the system for massive logs (e.g., 55GB).
+* **Iterating via `for line in file:`:** Reads one line at a time, flushes it, and moves to the next. This is the safest way to process massive files without crashing the laptop.
+
+#### 3. Text Formatting & Encoding
+* **`strip()`:** A string method used to remove hidden characters (like `\n` newlines) and extra whitespaces from the beginning and end of a line read from a file.
+* **`encoding="utf-8"`:** The global standard dictionary for characters. Using `open("file.txt", "w", encoding="utf-8")` ensures that special symbols, emojis, and multiple languages don't turn into corrupted "garbage" text across different operating systems (Windows vs Mac/Linux).
+
+#### 4. Managing Directories & Paths
+* **Windows Paths:** Python interprets `\` as escape characters. To safely write paths, use forward slashes (`C:/folder/file.txt`) or double backslashes (`C:\\folder\\file.txt`).
+* **`os.getcwd()`:** Retrieves the Current Working Directory (the folder where the terminal is currently operating).
+
+### 💻 Scripts Created in this Module
+3. **`03_reading_files.py`**: Demonstrated the difference between reading files normally (which leaves hidden `\n` characters) vs. using `.strip()`, and explored the memory-heavy `.readlines()` method.
+4. **`04_hospital_patient_tracker.py`**: A practical, real-world application of File I/O. Used `"w"`, `"a"`, and `"r"` modes to create a dynamic register that can Admit (append), Discharge (filter and rewrite), and Search for patient statuses dynamically.
+
 ### 📦 Important Terminal Commands
-**Package Management:**
 ```bash
-pip install arrow
-pip install Pillow
-pip install psutil
+# To navigate to a specific folder in the terminal
+cd Folder_Name/Sub_Folder
