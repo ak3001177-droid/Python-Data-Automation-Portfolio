@@ -129,7 +129,7 @@ print(jonagold.description())
 
 # 🚀 COURSE 2: Using Python to Interact with the Operating System
 
-## 📖 Module 1: Getting Your Python On (Completed)
+## 📖 Module 1: Getting Your Python On 
 This module focuses on the fundamentals of using Python to interact directly with the local Operating System, managing packages, and understanding how to write scripts that monitor system health.
 
 ### 🛠️ Key Modules & Concepts Learned
@@ -152,7 +152,7 @@ Require installation using the Python Package Manager (`pip`).
 
 ---
 
-## 📖 Module 2: Reading and Writing Files (Completed)
+## 📖 Module 2: Reading and Writing Files
 This module focuses on file operations, memory management while handling large files, encoding standards, and navigating OS directories using Python.
 
 ### 🛠️ Key Concepts & Best Practices Learned
@@ -184,3 +184,40 @@ This module focuses on file operations, memory management while handling large f
 ```bash
 # To navigate to a specific folder in the terminal
 cd Folder_Name/Sub_Folder
+
+### 🛠️ Advanced OS & File Management (Module 2 - Part 2)
+
+#### 1. Managing Directories (Folders) with `os` Module
+* **`os.getcwd()`**: Returns the Current Working Directory (finds exactly where your terminal/script is running).
+* **`os.chdir(path)`**: Changes the current directory (like double-clicking to enter a folder).
+* **`os.mkdir(path)`**: Creates a brand new, empty directory.
+* **`os.rmdir(path)`**: Deletes an empty directory (fails if the folder has files inside).
+* **`os.listdir(path)`**: Acts as a scanner; returns a Python list of all files and sub-folders inside a specific directory.
+
+#### 2. Managing Files & Paths with `os.path`
+* **`os.remove(path)`**: Permanently deletes a file.
+* **`os.rename(source, destination)`**: Renames a file, OR moves a file entirely from one folder to another if the full path is changed.
+* **`os.path.exists(path)`**: A radar that returns `True` if a file or folder exists, and `False` if it doesn't (used for safe coding).
+* **`os.path.isdir(path)`**: Checks if the given path is a folder (directory) and not just a file.
+* **`os.path.getsize(path)`**: Returns the exact size of a file in bytes.
+* **`os.path.getmtime(path)`**: Returns the last modification time of a file as a raw Unix timestamp (in seconds since 1970).
+* **`os.path.join(dir, file)`**: The safest way to combine folder and file names into a complete path. It automatically uses the correct slash (`\` for Windows, `/` for Mac/Linux).
+* **`os.path.abspath(path)`**: Converts a messy relative path (like `..` which means "one folder back") into a clean, absolute system path.
+
+#### 3. Date/Time & String Manipulation
+* **`datetime.datetime.fromtimestamp(timestamp)`**: Acts as a translator. Converts a raw OS timestamp (e.g., `1783069460.5`) into a human-readable date and time.
+* **String Slicing `[:10]`**: Used to extract specific portions of text. For example, slicing a datetime string to get only the first 10 characters representing the date (`yyyy-mm-dd`).
+
+#### 4. The Modern Approach: `pathlib`
+The object-oriented, modern way to handle file paths in Python without repeatedly calling OS functions.
+* **`from pathlib import Path`**: Imports the smart Path object.
+* **The `/` Operator**: Used to easily join directories and files (e.g., `dest_dir / "README.md"`).
+* **Direct Methods**: Allows files/folders to act on themselves (e.g., `path.exists()`, `path.mkdir()`, `path.rename()`).
+
+### 💻 Scripts Created (Medical Automation Theme)
+5. **`05_prescription_size.py`**: Created a text file and measured its size using `os.path.getsize()`.
+6. **`06_ward_admission.py`**: Automated directory creation and file generation using `os.mkdir`, `os.chdir`, and checked contents with `os.listdir`.
+7. **`07_lab_report_date.py`**: Extracted a file's timestamp using `getmtime`, converted it via `datetime`, and used string slicing to format it to `yyyy-mm-dd`.
+8. **`08_hospital_navigation.py`**: Handled relative paths (`..`) and converted them to absolute paths using `os.path.abspath()`.
+9. **`09_patient_transfer.py`**: Successfully moved a file between directories using `os.rename()`.
+10. **`10_modern_transfer_pathlib.py`**: Replicated the file transfer logic using Python's modern `pathlib` module.
