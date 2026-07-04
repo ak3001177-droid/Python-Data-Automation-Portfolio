@@ -221,3 +221,30 @@ The object-oriented, modern way to handle file paths in Python without repeatedl
 8. **`08_hospital_navigation.py`**: Handled relative paths (`..`) and converted them to absolute paths using `os.path.abspath()`.
 9. **`09_patient_transfer.py`**: Successfully moved a file between directories using `os.rename()`.
 10. **`10_modern_transfer_pathlib.py`**: Replicated the file transfer logic using Python's modern `pathlib` module.
+```
+---
+
+### 📊 Reading & Writing CSV Files (Module 2 - Part 3)
+
+#### 1. The Basic CSV Tools (Lists)
+* **`csv.reader(file)`**: The basic scanner. It reads a CSV file and converts each row into a Python List (e.g., `['Rahul', 'Nurse']`).
+* **Unpacking**: A Python trick to assign list items to multiple variables in a single line. Example: `name, role = row`. Must match the exact number of columns.
+* **`csv.writer(file)`**: The basic printer. Takes Python data and prepares it to be written to a CSV file.
+* **`writer.writerows(list_of_lists)`**: Writes an entire block of data (multiple rows) into the CSV file at once, saving the need for a `for` loop.
+
+#### 2. The Smart CSV Tools (Dictionaries)
+* **`csv.DictReader(file)`**: The VIP scanner. It automatically reads the first row of the CSV as Column Headers (Keys) and turns every subsequent row into a Python Dictionary. Example: `row["Patient_Name"]`.
+* **`csv.DictWriter(file, fieldnames=keys)`**: The VIP printer. Writes dictionary data perfectly under assigned columns.
+* **`writer.writeheader()`**: A critical command used with `DictWriter`. It stamps the column names (Keys) onto the very first row of the new CSV file.
+
+#### 3. Crucial Helper Concepts
+* **`next(iterator)`**: The Skipper. When using a standard `csv.reader` on a file that has headings, placing `next(rows)` right before the `for` loop forces Python to skip the title row and jump straight to the data.
+* **Variable Initialization (The "Blank Paper" Concept)**: Declaring a variable like `return_string = ""` before a loop. This creates an empty container in memory so that new data can be safely appended (`+=`) during the loop without crashing the program.
+* **Parsing**: The programming term for analyzing a raw file's contents to correctly structure and understand its data (e.g., converting a text file into dictionaries).
+
+### 🏥 Scripts Created (Hospital Automation Theme)
+11. **`11_read_staff_basic.py`**: Used `csv.reader` and variable unpacking to print staff details from a CSV file.
+12. **`12_write_icu_beds.py`**: Wrote bulk data (List of Lists) to a new file using `csv.writer` and `writerows()`.
+13. **`13_smart_patient_reader.py`**: Used `csv.DictReader` to pull specific patient data using column headings as dictionary keys.
+14. **`14_write_doctor_roster.py`**: Formatted and wrote dictionary data into a CSV using `csv.DictWriter`, utilizing `writeheader()` for column titles.
+15. **`15_skip_title_reader.py`**: Demonstrated how to safely read data using `csv.reader` while bypassing the header row using the `next()` function.

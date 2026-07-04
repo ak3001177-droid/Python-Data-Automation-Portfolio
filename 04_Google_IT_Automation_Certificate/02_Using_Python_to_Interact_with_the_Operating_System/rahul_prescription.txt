@@ -1,0 +1,3 @@
+Patient Name: Rahul
+Diagnosis: Viral Fever
+Medicines: Paracetamol 500mg, Rest for 3 days.
