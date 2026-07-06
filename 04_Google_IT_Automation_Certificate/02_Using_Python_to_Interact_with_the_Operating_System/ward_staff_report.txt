@@ -1,0 +1,3 @@
+ICU:3
+OPD:2
+Surgery:1

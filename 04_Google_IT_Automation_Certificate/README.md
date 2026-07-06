@@ -248,3 +248,18 @@ The object-oriented, modern way to handle file paths in Python without repeatedl
 13. **`13_smart_patient_reader.py`**: Used `csv.DictReader` to pull specific patient data using column headings as dictionary keys.
 14. **`14_write_doctor_roster.py`**: Formatted and wrote dictionary data into a CSV using `csv.DictWriter`, utilizing `writeheader()` for column titles.
 15. **`15_skip_title_reader.py`**: Demonstrated how to safely read data using `csv.reader` while bypassing the header row using the `next()` function.
+
+#### 4. Advanced Data Processing (The Pipeline Concept)
+A complete Data Pipeline usually consists of 3 phases: **Read (Collect) -> Process (Calculate/Filter) -> Write (Report)**.
+
+* **`csv.register_dialect('name', skipinitialspace=True, strict=True)`**: Used to create custom rulebooks for reading messy CSV files (e.g., ignoring extra spaces after commas). You can then pass this dialect to your reader using `dialect='name'`.
+* **`dict(data)`**: A quick conversion tool. If you are looping through raw data rows, wrapping it in `dict()` ensures the data is strictly converted and stored as a Python Dictionary before appending it to a master list.
+* **`set(list_name)`**: The Duplicate Killer. It takes a list with repeating values (e.g., `['ICU', 'OPD', 'ICU']`) and returns only the unique items (`{'ICU', 'OPD'}`). Highly useful for optimizing loops so they only run for unique categories.
+* **`list.count(item)`**: Counts exactly how many times a specific item appears in a list.
+* **`sorted(dictionary)`**: Automatically arranges the keys of a dictionary in A-to-Z (Alphabetical) order, which is perfect for generating clean, professional reports.
+* **Local Variables (Aliases)**: When passing data between functions, the receiving function can use a generic parameter name (like `dictionary` or `report_file`) instead of the original variable's name (like `department_data`). This makes functions reusable for different types of data.
+
+### 🏥 Final Module Project
+16. **`16_hospital_hr_pipeline.py`**: A complete end-to-end data pipeline. It generates dummy CSV hospital data, reads it using a custom dialect, processes the data to count staff members per ward using `set()` and `.count()`, and writes a final alphabetical summary report to a new text file.
+```
+---
