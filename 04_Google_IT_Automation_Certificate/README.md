@@ -261,5 +261,58 @@ A complete Data Pipeline usually consists of 3 phases: **Read (Collect) -> Proce
 
 ### 🏥 Final Module Project
 16. **`16_hospital_hr_pipeline.py`**: A complete end-to-end data pipeline. It generates dummy CSV hospital data, reads it using a custom dialect, processes the data to count staff members per ward using `set()` and `.count()`, and writes a final alphabetical summary report to a new text file.
+
+---
+
+### 🔍 Module 3: Regular Expressions (Regex)
+Regular Expressions (Regex) are powerful search patterns used to extract, validate, and manipulate text data. In Python, we use the built-in `re` module to work with regex.
+
+#### 1. Core Concepts & Best Practices
+* **Raw Strings (`r"pattern"`):** Always prefix regex patterns with `r`. This tells Python to treat backslashes (`\`) as literal characters, preventing them from triggering Python's default escape sequences (like `\n` for a new line).
+* **The Match Object:** When `re.search()` finds a match, it returns a Match Object (e.g., `<re.Match object; span=(1, 4), match='aza'>`). The `span` indicates the starting and ending index of the matched substring.
+* **Greediness:** By default, regex quantifiers (like `*` and `+`) are "greedy." They try to match as much text as possible. 
+
+#### 2. The Regex Toolkit (Metacharacters)
+* **`.` (The Wildcard / Dot):** Matches **exactly one** character of any type (letter, number, symbol, space).
+* **`\` (The Escape Character):** Cancels the magical powers of reserved characters. For example, `\.` looks for a literal period/dot (crucial for finding `.com` or IP addresses).
+* **`\w` (The Word Character):** A shortcut that matches any letter (a-z, A-Z), number (0-9), or underscore (`_`). **Note:** It does not match spaces!
+* **`|` (The OR Operator / Pipe):** Acts as a logical OR. `cat|dog` will match either "cat" or "dog".
+
+#### 3. Character Classes `[...]`
+Square brackets let you define strict rules for a single character space.
+* **Ranges (`[a-z]`, `[A-Z0-9]`):** Matches any one character that falls within the specified range.
+* **The NOT Operator (`[^...]`):** Placing a circumflex `^` *inside* the brackets inverts the rule. `[^a-zA-Z]` means "Match anything that is NOT a letter" (e.g., it will match spaces or punctuation).
+
+#### 4. Quantifiers (The Quantity Managers)
+These determine how many times the preceding character/pattern should occur:
+* **`*` (Star):** Matches **0 or more** times. (e.g., `a*` matches "", "a", "aa", "aaa").
+* **`+` (Plus):** Matches **1 or more** times. (e.g., `a+` matches "a", "aa", but fails if "a" is missing).
+* **`?` (Question Mark):** Matches **0 or 1** time. It makes the preceding character **optional**. (e.g., `p?each` matches both "peach" and "each").
+
+#### 5. Anchors (The Security Guards)
+Anchors do not match characters; they match positions. They force the pattern to appear at specific locations in the string.
+* **`^` (Start Anchor):** When used *outside* square brackets, it forces the match to happen strictly at the **beginning** of the string.
+* **`$` (End Anchor):** Forces the match to happen strictly at the **end** of the string.
+
+#### 6. The `grep` Command (Linux/Command Line)
+* `grep` (Global Regular Expression Print) is the command-line equivalent of regex. It is used in Linux/Unix terminals to quickly filter lines in large files (e.g., server logs) that contain specific patterns.
+* Usage: `grep "ERROR" server_logs.txt`
+
+#### 🏆 Boss Level Example: Validating a Python Variable Name
+```python
+import re
+
+pattern = r"^[a-zA-Z_][a-zA-Z0-9_]*$"
+# ^             -> String MUST start here.
+# [a-zA-Z_]     -> 1st character MUST be a letter or underscore.
+# [a-zA-Z0-9_]* -> Following characters can be letters, numbers, or underscores (0 or more times).
+# $             -> String MUST end here (no trailing spaces or invalid symbols).
+
+print(re.search(pattern, "_my_variable1")) # PASS
+print(re.search(pattern, "2nd_variable"))  # FAIL (Starts with a number)
 ```
 ---
+
+### 🏥 Scripts Created (Hospital Automation Theme)
+17. **`17_patient_data_validator.py`**: Used `re.search()` along with strict anchors (`^`, `$`), word characters (`\w`), quantifiers (`+`), and the escape character (`\.`) to enforce strict validation rules for patient emails and IDs.
+18. **`18_medical_log_scanner.py`**: Utilized the OR operator (`|`), optional quantifier (`?`), greedy wildcard (`.*`), and the NOT operator (`[^...]`) to extract doctor names, medical conditions, and flag invalid symbols from unstructured log text.
