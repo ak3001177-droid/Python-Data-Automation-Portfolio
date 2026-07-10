@@ -316,3 +316,9 @@ print(re.search(pattern, "2nd_variable"))  # FAIL (Starts with a number)
 ### 🏥 Scripts Created (Hospital Automation Theme)
 17. **`17_patient_data_validator.py`**: Used `re.search()` along with strict anchors (`^`, `$`), word characters (`\w`), quantifiers (`+`), and the escape character (`\.`) to enforce strict validation rules for patient emails and IDs.
 18. **`18_medical_log_scanner.py`**: Utilized the OR operator (`|`), optional quantifier (`?`), greedy wildcard (`.*`), and the NOT operator (`[^...]`) to extract doctor names, medical conditions, and flag invalid symbols from unstructured log text.
+
+### 🏥 Advanced Text Processing & Automation (Regex)
+
+* **`19_name_rearranger.py`**: Utilizes Regex Capturing Groups `()` and Backreferences to automatically parse and reformat string structures, converting "Lastname, Firstname" formats into standard "Firstname Lastname" outputs.
+* **`20_data_redactor.py`**: A data privacy script leveraging `re.sub()` and custom character classes `[\w.%+-]+` to identify and securely mask sensitive user information (such as email addresses) with `[REDACTED]` tags.
+* **`21_MediFlow_Processor.py`**: A comprehensive log processing tool for medical automation. It standardizes 10-digit Indian mobile numbers into the international `+91` format, seamlessly converts comment syntaxes across languages, and implements strict safety checks to prevent runtime crashes during Process ID (PID) extraction.
