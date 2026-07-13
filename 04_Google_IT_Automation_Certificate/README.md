@@ -322,3 +322,9 @@ print(re.search(pattern, "2nd_variable"))  # FAIL (Starts with a number)
 * **`19_name_rearranger.py`**: Utilizes Regex Capturing Groups `()` and Backreferences to automatically parse and reformat string structures, converting "Lastname, Firstname" formats into standard "Firstname Lastname" outputs.
 * **`20_data_redactor.py`**: A data privacy script leveraging `re.sub()` and custom character classes `[\w.%+-]+` to identify and securely mask sensitive user information (such as email addresses) with `[REDACTED]` tags.
 * **`21_MediFlow_Processor.py`**: A comprehensive log processing tool for medical automation. It standardizes 10-digit Indian mobile numbers into the international `+91` format, seamlessly converts comment syntaxes across languages, and implements strict safety checks to prevent runtime crashes during Process ID (PID) extraction.
+### 📁 Bulk Data Handling & CSV Automation
+
+* **`22_machine_error_auditor.py`**: A powerful data auditing script that integrates `re` (Regex Capturing Groups) with Python's built-in `csv` module. It scans bulk patient reports (`hospital_reports.csv`), identifies legacy machine error codes (e.g., `ERR-2026-X`), and dynamically upgrades them to a new format (`FIX-2026-X`) using backreferences (`\1`). The sanitized data is then securely exported to `verified_reports.csv` without modifying the original records.
+
+---
+
