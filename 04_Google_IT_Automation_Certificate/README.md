@@ -328,3 +328,24 @@ print(re.search(pattern, "2nd_variable"))  # FAIL (Starts with a number)
 
 ---
 
+## Module 4: Python and Operating System Interactions
+
+### 1. I/O Streams & Redirection (`23_streams.py`)
+In this script, we understood the standard data flow of the terminal:
+* **STDIN:** Taking user input from the terminal (using the `input()` function).
+* **STDOUT:** Printing the successful output and results to the screen.
+* **STDERR:** Handling errors or crashes in a separate stream.
+* **Key Learning:** We learned how to use `>` (Overwrite) and `>>` (Append) to redirect STDOUT and STDERR away from the terminal and save them directly into text files (`.txt`).
+
+### 2. Environment Variables (`24_variables.py`)
+In this script, we learned how to access hidden system settings using Python:
+* **`os.environ.get()`:** Using this Python module, we read OS environment variables (like `HOME`, `SHELL`, or custom variables).
+* **Setting Variables:** Learned how to inject temporary environment variables (e.g., `FRUIT=Pineapple`) in the terminal using `export` (Linux) or `set` (Windows).
+* **The `$PATH` Variable:** Understood how the OS searches for executable files within the directories listed in the `$PATH` variable whenever a command (like `python` or `ls`) is run.
+
+### 3. Command-Line Arguments & Exit Status (`25_create_file.py`)
+This script was a complete automation tool utilizing multiple system modules:
+* **`sys.argv`:** Using this list, we learned how to pass data (arguments) directly from the terminal while executing the code (e.g., `python script.py example_file`).
+* **Safe File Operations:** Used `os.path.exists()` to check if a file already exists before creating it, ensuring old data isn't accidentally overwritten.
+* **Exit Status (`$?`):** * If the code executes successfully without any errors, it returns `0` to the OS.
+  * If an error occurs, we learned to stop the program cleanly using `sys.exit(1)` and send a `1` (fail status) to the OS.
